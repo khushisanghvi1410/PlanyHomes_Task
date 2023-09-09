@@ -74,34 +74,35 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-  var dropDownitems = ["Item 1", "2", "3"];
-  var dropdownvalue;
-  List<String> cards = ["Gifts", "Fast Delivery", "Ceremic"];
-  var details = [
-    {'name': "Flower", "image": 'assets/flower.jpeg'},
-    {'name': "Fruits", "image": 'assets/fruits.jpeg'},
-    {'name': "Vegetables", "image": 'assets/vegetables.jpeg'},
-    {'name': "Ceremic", "image": 'assets/ceremic.jpeg'},
-  ];
+var dropDownitems = ["Item 1", "2", "3"];
+var dropdownvalue;
+List<String> cards = ["Gifts", "Fast Delivery", "Ceremic"];
+var details = [
+  {'name': "Flower", "image": 'assets/flower.jpeg'},
+  {'name': "Fruits", "image": 'assets/fruits.jpeg'},
+  {'name': "Vegetables", "image": 'assets/vegetables.jpeg'},
+  {'name': "Ceremic", "image": 'assets/ceremic.jpeg'},
+];
 
-  var details2 = [
-    {'name': "Hanging", "image": 'assets/hanging.jpeg'},
-    {'name': "Spices", "image": 'assets/ceremic.jpeg'},
-    {'name': "Relgious", "image": 'assets/religious.jpeg'},
-    {'name': "Green Plant", "image": 'assets/green.jpeg'},
-  ];
-  var nursery = [
-    {"image": "assets/nursery.jpeg"},
-    {"image": "assets/nursery.jpeg"},
-    {"image": "assets/nursery.jpeg"},
-    {"image": "assets/nursery.jpeg"},
-    {"image": "assets/nursery.jpeg"},
-  ];
+var details2 = [
+  {'name': "Hanging", "image": 'assets/hanging.jpeg'},
+  {'name': "Spices", "image": 'assets/ceremic.jpeg'},
+  {'name': "Relgious", "image": 'assets/religious.jpeg'},
+  {'name': "Green Plant", "image": 'assets/green.jpeg'},
+];
+var nursery = [
+  {"image": "assets/nursery.jpeg"},
+  {"image": "assets/nursery.jpeg"},
+  {"image": "assets/nursery.jpeg"},
+  {"image": "assets/nursery.jpeg"},
+  {"image": "assets/nursery.jpeg"},
+];
+
 class _MyHomePageState extends State<MyHomePage> {
   int index = 0;
-  static final List<Widget> _widgetoptions=<Widget>[
-      Scaffold(
-        body:  Container(
+  static final List<Widget> _widgetoptions = <Widget>[
+    Scaffold(
+      body: Container(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -169,12 +170,10 @@ class _MyHomePageState extends State<MyHomePage> {
                     items: dropDownitems.map((String e) {
                       return DropdownMenuItem(value: e, child: Text(e));
                     }).toList(),
-                    onChanged: (value) {
-                     
-                    },
+                    onChanged: (value) {},
                   ),
                   ...cards.map((e) {
-                    return  SizedBox(
+                    return SizedBox(
                         height: 40,
                         // padding: const EdgeInsets.all(8),
                         child: Center(
@@ -283,8 +282,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         child: SingleChildScrollView(
                             scrollDirection: Axis.horizontal,
                             child: Row(
-                              mainAxisAlignment:
-                                  MainAxisAlignment.spaceAround,
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: nursery.map((e) {
                                 return Container(
                                   padding: EdgeInsets.fromLTRB(8, 0, 0, 8),
@@ -313,24 +311,19 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      ),
-      const Text(
-      'Index 1: Business',
     ),
     const Text(
-      'Index 2: School',
+      'Page 2',
     ),
     const Text(
-      'Index 3: School',
+      'Page 3',
     ),
-    const Maps(
-      
+    const Text(
+      'Page 4',
     ),
-    
-
+    const Maps(),
   ];
   @override
-
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
@@ -369,26 +362,21 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               label: "Delivery "),
           BottomNavigationBarItem(
-
-
               icon: Icon(
                 Icons.map_sharp,
-
                 color: index == 4 ? Colors.green : Colors.brown,
               ),
               label: "Settings "),
         ],
         showUnselectedLabels: false,
         iconSize: 30,
-
         showSelectedLabels: false,
       ),
 
       // Body of the Page........
-      body:Center(
+      body: Center(
         child: _widgetoptions.elementAt(index),
       ),
-      
     );
   }
 }
