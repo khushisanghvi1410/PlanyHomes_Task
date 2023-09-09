@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:planty_homes/Maps.dart';
 
 void main() {
   runApp(const MyApp());
@@ -73,7 +74,6 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
   var dropDownitems = ["Item 1", "2", "3"];
   var dropdownvalue;
   List<String> cards = ["Gifts", "Fast Delivery", "Ceremic"];
@@ -97,60 +97,11 @@ class _MyHomePageState extends State<MyHomePage> {
     {"image": "assets/nursery.jpeg"},
     {"image": "assets/nursery.jpeg"},
   ];
+class _MyHomePageState extends State<MyHomePage> {
   int index = 0;
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        currentIndex: index,
-        onTap: (int index) {
-          setState(() {
-            this.index = index;
-          });
-        },
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home,
-              color: index == 0 ? Colors.green : Colors.brown,
-            ),
-            label: "Home",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              color: index == 1 ? Colors.green : Colors.brown,
-              Icons.card_giftcard,
-            ),
-            label: "Shopping ",
-          ),
-          BottomNavigationBarItem(
-              icon: Icon(
-                color: index == 2 ? Colors.green : Colors.brown,
-                Icons.construction,
-              ),
-              label: "Repair "),
-          BottomNavigationBarItem(
-              icon: Icon(
-                Icons.pedal_bike,
-                color: index == 3 ? Colors.green : Colors.brown,
-              ),
-              label: "Delivery "),
-          BottomNavigationBarItem(
-              icon: Icon(
-                Icons.settings,
-                color: index == 4 ? Colors.green : Colors.brown,
-              ),
-              label: "Settings "),
-        ],
-        showUnselectedLabels: false,
-        iconSize: 30,
-
-        showSelectedLabels: false,
-      ),
-
-      // Body of the Page........
-      body: Container(
+  static final List<Widget> _widgetoptions=<Widget>[
+      Scaffold(
+        body:  Container(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -219,13 +170,11 @@ class _MyHomePageState extends State<MyHomePage> {
                       return DropdownMenuItem(value: e, child: Text(e));
                     }).toList(),
                     onChanged: (value) {
-                      setState(() {
-                        dropdownvalue = value!;
-                      });
+                     
                     },
                   ),
                   ...cards.map((e) {
-                    return Container(
+                    return  SizedBox(
                         height: 40,
                         // padding: const EdgeInsets.all(8),
                         child: Center(
@@ -364,6 +313,82 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
+      ),
+      const Text(
+      'Index 1: Business',
+    ),
+    const Text(
+      'Index 2: School',
+    ),
+    const Text(
+      'Index 3: School',
+    ),
+    const Maps(
+      
+    ),
+    
+
+  ];
+  @override
+
+  Widget build(BuildContext context) {
+    return Scaffold(
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        currentIndex: index,
+        onTap: (int index) {
+          setState(() {
+            this.index = index;
+          });
+        },
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.home,
+              color: index == 0 ? Colors.green : Colors.brown,
+            ),
+            label: "Home",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              color: index == 1 ? Colors.green : Colors.brown,
+              Icons.card_giftcard,
+            ),
+            label: "Shopping ",
+          ),
+          BottomNavigationBarItem(
+              icon: Icon(
+                color: index == 2 ? Colors.green : Colors.brown,
+                Icons.construction,
+              ),
+              label: "Repair "),
+          BottomNavigationBarItem(
+              icon: Icon(
+                Icons.pedal_bike,
+                color: index == 3 ? Colors.green : Colors.brown,
+              ),
+              label: "Delivery "),
+          BottomNavigationBarItem(
+
+
+              icon: Icon(
+                Icons.map_sharp,
+
+                color: index == 4 ? Colors.green : Colors.brown,
+              ),
+              label: "Settings "),
+        ],
+        showUnselectedLabels: false,
+        iconSize: 30,
+
+        showSelectedLabels: false,
+      ),
+
+      // Body of the Page........
+      body:Center(
+        child: _widgetoptions.elementAt(index),
+      ),
+      
     );
   }
 }
